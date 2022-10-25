@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.7.6"
+ruby "3.1.2"
 gem 'sassc-rails', '~> 2.1.0'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"
@@ -32,17 +32,19 @@ gem "jbuilder"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
-
+gem 'webpacker'
 # Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo"
 gem "tzinfo-data"
-
+gem 'faker'
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
-
+gem 'bcrypt'
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -51,7 +53,7 @@ gem "bootsnap", require: false
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "debug"
 end
 
 group :development do
@@ -70,10 +72,16 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "minitest-reporters"
+  gem "minitest"
+  gem 'guard'
+gem 'guard-minitest'
+gem "win32console"
+gem 'rails-controller-testing'
 end
 
 
-gem 'bootstrap-sass', '~> 3.4.1'
+gem 'bootstrap-sass'
 gem 'jquery-rails'
 
 group :development do

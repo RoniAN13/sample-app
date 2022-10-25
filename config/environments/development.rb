@@ -58,10 +58,13 @@ Rails.application.configure do
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
-
+  config.hosts.clear
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
-
+  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default_url_options = { :host => "127.0.0.1:3000" , protocol: 'http' }
+  # Use this if developing on localhost.
+  # config.action_mailer.default_url_options = { host: host, protocol: 'http' }
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
 
