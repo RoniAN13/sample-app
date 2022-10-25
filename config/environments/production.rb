@@ -25,7 +25,7 @@ Rails.application.configure do
   config.public_file_server.enabled = ENV["RAILS_SERVE_STATIC_FILES"].present?
 # Don't use this literally; use your local dev host instead
   # Use this on the cloud IDE.
-  config.action_mailer.default_url_options = { :host => "127.0.0.1:3000" , protocol: 'http' }
+  
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
 
