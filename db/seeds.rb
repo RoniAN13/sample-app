@@ -7,23 +7,22 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 # Generate a bunch of additional users.
-User.create!(name: "Roni Abou Nassif",
-email: "abounassif.roni@gmail.com",
-password: "foobar",
-password_confirmation: "foobar",
-admin: true,
-activated: true,
-activated_at: Time.zone.now)
+User.create!(name: 'Roni Abou Nassif',
+             email: 'abounassif.roni@gmail.com',
+             password: 'foobar',
+             password_confirmation: 'foobar',
+             admin: true,
+             activated: true,
+             activated_at: Time.zone.now)
 
 99.times do |n|
-name = Faker::Name.name
-email = "example-#{n+1}@railstutorial.org"
-password = "password"
-User.create!(name: name,
-email: email,
-password: password,
-password_confirmation: password,
-activated: true,
-activated_at: Time.zone.now)
-
+  name = Faker::Name.name
+  email = "example-#{n + 1}@railstutorial.org"
+  password = 'password'
+  User.create!(name:,
+               email:,
+               password:,
+               password_confirmation: password,
+               activated: true,
+               activated_at: Time.zone.now)
 end
