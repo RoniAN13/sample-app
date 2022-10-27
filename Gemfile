@@ -5,7 +5,9 @@ ruby '3.1.2'
 gem 'sassc-rails', '~> 2.1.0'
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '~> 7.0.4'
-
+gem 'active_storage_validations'
+gem 'image_processing'
+gem 'mini_magick'
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
@@ -90,4 +92,6 @@ end
 
 group :production do
   gem 'pg'
+  gem 'aws-sdk-s3',  require: false
+
 end
