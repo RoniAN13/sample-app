@@ -55,6 +55,8 @@ Rails.application.configure do
 
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
+  # Store files locally.
+config.active_storage.variant_processor = :mini_magick
 
   # Suppress logger output for asset requests.
   config.assets.quiet = true
