@@ -1,0 +1,3 @@
+
+ $('.like-count<%= @micropost.id %>').html("<%= @micropost.get_upvotes.size %>");
+ $('.dislike-count<%= @micropost.id %>').html("<%= @micropost.get_downvotes.size %>");

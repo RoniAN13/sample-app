@@ -19,4 +19,6 @@
 console.log('Hello World from Webpacker')
 
 require("jquery")
+import {} from 'jquery-ujs'
+
 import "bootstrap"

@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  acts_as_voter
   attr_accessor :remember_token, :activation_token, :reset_token
   has_many :microposts, dependent: :destroy
   has_many :active_relationships, class_name: "Relationship",
