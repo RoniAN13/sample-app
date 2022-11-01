@@ -1,3 +1,7 @@
-
+<% if current_user.disliked? @micropost %>
+ $('.dislike-btn<%= @micropost.id %>').addClass('disliked');
+ <%else%>
+ $('.dislike-btn<%= @micropost.id %>').addClass('dislike-btn');
+ <%end%>
  $('.dislike-count<%= @micropost.id %>').html("<%= @micropost.get_downvotes.size %>");
  $('.like-count<%= @micropost.id %>').html("<%= @micropost.get_upvotes.size %>");

@@ -1,10 +1,20 @@
 <li id="micropost-<%= micropost.id %>">
 <%= link_to gravatar_for(micropost.user, size: 50), micropost.user %>
 <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
+<div style="width:400px">
 <span class="content">
 <%= micropost.content %>
-<%= image_tag micropost.display_image if micropost.image.attached? %>
+
+<% if micropost.post_file.attached? %>
+    <% if micropost.post_file.content_type.include?("image") %>
+    <%= image_tag( micropost.display_image , style:'width:100%;height: auto') %>
+    <% else %>
+    <%= video_tag(url_for(micropost.post_file), style:'width:100%;height: 100%', controls: true)  %>
+    <%end%>
+<% end%>
+
 </span>
+</div>
 <span class="timestamp">
 
 <%= link_to like_micropost_path(micropost),class:"like-btn",method: :put, remote: true do %>

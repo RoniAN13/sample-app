@@ -6,7 +6,7 @@ include SessionsHelper
 
     def create
         @micropost = current_user.microposts.build(micropost_params)
-        @micropost.image.attach(params[:micropost][:image])
+        @micropost.post_file.attach(params[:micropost][:post_file])
         if @micropost.save
         flash[:success] = "Micropost created!"
         redirect_to root_url
@@ -45,7 +45,7 @@ include SessionsHelper
      
      private
         def micropost_params
-            params.require(:micropost).permit(:content, :image)
+            params.require(:micropost).permit(:content, :post_file)
         end
         def correct_user
             @micropost = current_user.microposts.find_by(id: params[:id])
