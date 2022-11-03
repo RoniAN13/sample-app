@@ -1,0 +1,15 @@
+
+<%= form_with model: [micropost, micropost.comments.build],remote:true do |f| %>
+    <%= render partial: 'shared/error_messages', locals: {object: f.object} %>
+    <div>
+      <%= f.text_area :content,style:"width:300px",class: "form-control" %>
+      
+    </div>
+  <% if !parent.nil? %>
+  <%= f.text_field :parent_id , value: parent.id , type:"hidden" %>
+  <%end%>
+  
+    <div>
+      <%= f.submit "Comment" , class: "btn btn-primary",style: "width:100px"  %>
+    </div>
+  <% end %>

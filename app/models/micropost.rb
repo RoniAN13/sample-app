@@ -1,4 +1,5 @@
 class Micropost < ApplicationRecord
+  has_many :comments,dependent: :destroy
   acts_as_votable
   belongs_to :user
   has_one_attached :post_file

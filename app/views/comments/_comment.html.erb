@@ -1,0 +1,31 @@
+<article style="padding-left:40px">
+<%= link_to gravatar_for(comment.user, size: 40,style:"margin-top:0px"), comment.user %>
+<span class="user"><%= link_to comment.user.name, comment.user %></span>
+<p><%= comment.content %></p>
+<span class="timestamp" style="margin-left:0px">
+Posted <%= time_ago_in_words(comment.created_at) %> ago.
+</span>
+<% if  current_user == comment.user || comment.micropost.user %>
+<%= link_to "delete", micropost_comment_path(comment.micropost,comment), method: :delete,
+data: { confirm: "You sure?" } %>
+|
+<% end%>
+<a  data-toggle="collapse" href="#collapseReply<%= comment.id %>" role="button" aria-expanded="false" aria-controls="collapseReply">
+    reply
+  </a>
+  <% if comment.comments.count != 0   %>
+  |
+  <a  data-toggle="collapse" href="#collapseComment<%= comment.id %>" role="button" aria-expanded="false" aria-controls="collapseComment">
+    show <%= comment.comments.count %>
+  </a>
+  <%end %>
+<div class="collapse" id="collapseReply<%= comment.id %>" >
+<%= render partial: 'comments/form', locals: {micropost: comment.micropost,parent: comment} %>
+</div>
+
+  <div class="collapse" id="collapseComment<%= comment.id %>">
+<%= render comment.comments.order(id: :desc) %>
+</div>
+
+</article>
+

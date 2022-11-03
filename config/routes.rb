@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets, only: %i[new create edit update]
   resources :microposts do
+    resources :comments, only: %i[create destroy]
     member do
       put "like" => "microposts#upvote"
       put "dislike" => "microposts#downvote"

@@ -33,7 +33,19 @@ Posted <%= time_ago_in_words(micropost.created_at) %> ago.
 <% if current_user?(micropost.user) %>
 <%= link_to "delete", micropost, method: :delete,
 data: { confirm: "You sure?" } %>
-<% end %>
 
+<% end %>
+<p style="color:black">Comments:</p>
+</span>
+
+<span class="content" style="margin-left:150px">
+
+<%= render micropost.comments.where(parent_id: nil).includes(:user).order(id: :desc) %>
+<hr style:"color:grey"/>
+
+<p style="color:black">Add Comment:</p>
+<%= render partial: 'comments/form', locals: { micropost: micropost,parent:nil} %>
 </span>
 </li>
+
+
