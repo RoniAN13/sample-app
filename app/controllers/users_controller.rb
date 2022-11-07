@@ -17,6 +17,19 @@ class UsersController < ApplicationController
     @microposts = @user.microposts.paginate(page: params[:page])
 
   end
+  def showto
+    @user = User.find(params[:id])
+    @current_user = current_user
+    @chatrooms = Chatroom.public_rooms
+    @users = User.all_except(@current_user)
+    @chatroom = Chatroom.new
+    @message = Message.new
+    @room_name = get_name(@user, @current_user)
+    @single_room = Chatroom.where(name: @room_name).first || Chatroom.create_private_room([@user, @current_user], @room_name)
+    @messages = @single_room.messages
+
+    render "chatrooms/index"
+  end  
 
   def create
     @user = User.new(user_params) # Not the final implementation!
@@ -79,5 +92,9 @@ class UsersController < ApplicationController
 
   def admin_user
     redirect_to(root_url) unless current_user.admin?
+  end
+  def get_name(user1, user2)
+    users = [user1, user2].sort
+    "private_#{users[0].id}_#{users[1].id}"
   end
 end

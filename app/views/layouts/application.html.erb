@@ -19,8 +19,19 @@
   <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
   <% end %>
 <%= yield %>
+<style>
+  <%= ".msg-#{current_user&.id}" %> {
+  background-color: #007bff !important;
+  padding: 10px;
+  }
+  <%= ".cont-#{current_user&.id}" %> {
+  display: flex;
+  justify-content: flex-end
+  }
+</style>
 <%= render 'layouts/footer' %>
 <%= debug(params) if Rails.env.development? %>
 </div>
+
 </body>
 </html>

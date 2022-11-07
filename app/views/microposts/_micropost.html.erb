@@ -18,12 +18,12 @@
 <span class="timestamp">
 
 <%= link_to like_micropost_path(micropost),class:"like-btn",method: :put, remote: true do %>
-  Like
+  <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>
   
   <%end%>
   <span class="like-count<%= micropost.id%>"><%= micropost.get_upvotes.size %> </span>
   <%= link_to dislike_micropost_path(micropost),class:"dislike-btn",method: :put, remote: true do %>
-    Dislike 
+    <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> 
     <%end%>
     <span class="dislike-count<%= micropost.id%>"><%= micropost.get_downvotes.size %></span>
   </span>
